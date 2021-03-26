@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRock - Виртуальный любимец камешек!</title>
+    <script src="cookie.js"></script>
+    <script type="text/javascript">
+        var userName
+        function greetUser() {
+            if (navigator.cookieEnabled)
+                userName = readCookie("irock_username")
+            if (userName)
+                alert("Hello " + userName + ",I missed you.")
+            else
+                alert('Hello, Im you pet rock.')
+        }
+        function touchRock() {
+            if (userName) {
+                alert('I like the attention, ' + userName + '.Thank you.')
+            }
+            else {
+                userName = prompt('What is your name?', 'Enter you name.')
+                if (userName) {
+                    alert('Nice to meet you,' + userName + '.')
+                    if (navigator.cookieEnabled)
+                        writeCookie("irock_username", userName, 5 * 365)
+                    else alert("Sorry, Cookies off")
+                }
+                document.getElementById("rockImg").src = "rock_happy.png"
+                setTimeout("document.getElementById('rockImg').src = 'rock.png';", 5000)
+            }
+        }
+    </script>
+</head>
+
+<body onload="greetUser();">
+    <div style="margin-top: 100px; text-align: center;">
+        <img id="rockImg" src="rock.png" alt="iRock" style="cursor: pointer;" onclick="touchRock();">
+    </div>
+</body>
+
+</html>
