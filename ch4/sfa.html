@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var curScene = 0
+        function changeScene(decision) {
+            var message = ""
+
+            // if (curScene == 0) {
+            //     curScene = 1
+            //     message = "Your journey begins at the fork of the road."
+            // }
+            // else if (curScene == 1) {
+            //     if (decision == 1) {
+            //         curScene = 2
+            //         message = "House"
+            //     }
+            //     else {
+            //         curScene = 3
+            //         message = "Bridge"
+            //     }
+            // }
+
+            // else if (curScene == 3)
+            //     if (decision == 1) {
+            //         curScene = 6
+            //         message = "Sorry, a troll lives on the other side of the bridge and you just became his lunch."
+            //     }
+            //     else {
+            //         curScene = 7
+            //         message = "Your stare is interrupted by the arrival of a huge troll."
+            //     }
+            // else if (curScene == 4) {
+            //     if (decision == 1) {
+            //         curScene = 8
+            //     } else {
+            //         curScene = 5
+            //         message = "Sorry, you became part of the witch's stew."
+            //     }
+            // }
+
+            switch (curScene) {
+                case 0:
+                    curScene = 1
+                    message = "Your journey begins at the fork of the road."
+                    break;
+
+                case 1:
+                    if (decision == 1) {
+                        curScene = 2
+                        message = "You have arrived at a cute little hose in the woods."
+                    }
+                    else {
+                        curScene = 3
+                        message = "You are standing on the bridge overlooking a peaceful stream."
+                    }
+                    break;
+
+            }
+
+
+            document.getElementById("sceneimg").src = "scene" + curScene + ".png"
+            alert(message)
+        }
+    </script>
+</head>
+
+<body>
+    <div style="margin-top: 100px; text-align: center;"> <img id="sceneimg" src="scene1.png"
+            alt="stick figure adventure"><br>
+        Please choose path
+        <input type="button" id="decision1" value="1" onclick="changeScene(1)">
+        <input type="button" id="decision2" value="2" onclick="changeScene(2)">
+    </div>
+
+</body>
+
+</html>
