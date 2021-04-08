@@ -16,12 +16,10 @@
             for (var i = 0; i < seats.length; i++)
                 for (var j = 0; j < seats[i].length; j++) {
                     if (seats[i][j]) {
-                        document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_avail.png"
-                        document.getElementById("seat" + (i * seats[i].length + j)).alt = "Available seat"
+                        setSeat(i * seats[i].length + j, "avail", "Available seat")
                     }
                     else {
-                        document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_unavail.png"
-                        document.getElementById("seat" + (i * seats[i].length + j)).alt = "Unavailable seat"
+                        setSeat(i * seats[i].length + j, "unavail", "Unavailable seat")
                     }
                 }
         }
@@ -35,13 +33,10 @@
             while ((i < seats.length) && !finished) {
                 for (var j = 0; j < seats[i].length; j++) {
                     if (seats[i][j] && seats[i][j + 1] && seats[i][j + 2]) {
-                        selSeat = (i * seats[i].length + j)
-                        document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_select.png"
-                        document.getElementById("seat" + (i * seats[i].length + j)).alt = "Your seat"
-                        document.getElementById("seat" + (i * seats[i].length + j + 1)).src = "seat_select.png"
-                        document.getElementById("seat" + (i * seats[i].length + j + 1)).alt = "Your seat"
-                        document.getElementById("seat" + (i * seats[i].length + j + 2)).src = "seat_select.png"
-                        document.getElementById("seat" + (i * seats[i].length + j + 2)).alt = "Your seat"
+                        selSeat = i * seats[i].length + j
+                        setSeat(i * seats[i].length + j, "select", "Your seat")
+                        setSeat(i * seats[i].length + j + 1, "select", "Your seat")
+                        setSeat(i * seats[i].length + j + 2, "select", "Your seat")
                         var accept = confirm("Seat " + (j + 1) + " through " + (j + 3) + " in Row " + (i + 1) + " are available. Accept?")
                         if (accept) {
                             finished = true
@@ -49,17 +44,18 @@
                         }
                         else {
                             selSeat = -1
-                            document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_avail.png"
-                            document.getElementById("seat" + (i * seats[i].length + j)).alt = "Available seat"
-                            document.getElementById("seat" + (i * seats[i].length + j + 1)).src = "seat_avail.png"
-                            document.getElementById("seat" + (i * seats[i].length + j + 1)).alt = "Available seat"
-                            document.getElementById("seat" + (i * seats[i].length + j + 2)).src = "seat_avail.png"
-                            document.getElementById("seat" + (i * seats[i].length + j + 2)).alt = "Available seat"
+                            setSeat(i * seats[i].length + j, "avail", "Available seat")
+                            setSeat(i * seats[i].length + j + 1, "avail", "Available seat")
+                            setSeat(i * seats[i].length + j + 2, "avail", "Available seat")
                         }
                     }
                 }
                 i++
             }
+        }
+        function setSeat(seatNum, status, description) {
+            document.getElementById("seat" + seatNum).src = "seat_" + status + ".png"
+            document.getElementById("seat" + seatNum).alt = description
         }
     </script>
 </head>
