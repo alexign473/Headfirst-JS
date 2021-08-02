@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Figure Adventure</title>
+    <link rel="stylesheet" href="sfa.css">
+    <script src="sfa.js"></script>
+</head>
+
+<body>
+    <div style="margin-top:100px; text-align:center">
+        <img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /> <br>
+        <div id="scenetext"></div><br>
+        Please choose:
+        <span id="decision1" class="decision" onclick="changeScene(1)" onmouseover="this.className='decisioninverse'"
+            onmouseout="this.className='decision'">Start Game</span>
+        <span id="decision2" class="decision" onclick="changeScene(2)" onmouseover="this.className='decisioninverse'"
+            onmouseout="this.className='decision'" style="visibility: hidden;"></span>
+        <div id="history" style="background-color:#EEEEEE"></div>
+    </div>
+</body>
+
+</html>
